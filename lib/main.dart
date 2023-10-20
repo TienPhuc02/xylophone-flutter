@@ -12,6 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var listColor = [
+    Colors.blue,
+    Colors.red,
+    Colors.green,
+    Colors.yellow,
+    Colors.blueGrey,
+    Colors.tealAccent,
+  ];
   final player = AudioPlayer();
   void playSound(String path) async {
     await player.play(AssetSource(path));
@@ -28,72 +36,74 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
-                child: Container(
-                  color: Colors.blue,
-                  child: GestureDetector(
-                    child: const Text("Note1"),
-                    onTap: () {
-                      playSound("note1.wav");
-                    },
+              for (var i = 1; i < listColor.length; i++)
+                Expanded(
+                  child: Container(
+                    color: listColor[i],
+                    child: GestureDetector(
+                      child: Text('Note$i'),
+                      onTap: () {
+                        playSound("note$i.wav");
+                      },
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.green,
-                  child: GestureDetector(
-                    child: const Text("Note2"),
-                    onTap: () {
-                      playSound("note2.wav");
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.yellow,
-                  child: GestureDetector(
-                    child: const Text("Note3"),
-                    onTap: () {
-                      playSound("note3.wav");
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.tealAccent,
-                  child: GestureDetector(
-                    child: const Text("Note4"),
-                    onTap: () {
-                      playSound("note4.wav");
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: GestureDetector(
-                    child: const Text("Note5"),
-                    onTap: () {
-                      playSound("note5.wav");
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.red,
-                  child: GestureDetector(
-                    child: const Text("Note6"),
-                    onTap: () {
-                      playSound("note6.wav");
-                    },
-                  ),
-                ),
-              ),
+
+              // Expanded(
+              //   child: Container(
+              //     color: Colors.green,
+              //     child: GestureDetector(
+              //       child: const Text("Note2"),
+              //       onTap: () {
+              //         playSound("note2.wav");
+              //       },
+              //     ),
+              //   ),
+              // ),
+              // Expanded(
+              //   child: Container(
+              //     color: Colors.yellow,
+              //     child: GestureDetector(
+              //       child: const Text("Note3"),
+              //       onTap: () {
+              //         playSound("note3.wav");
+              //       },
+              //     ),
+              //   ),
+              // ),
+              // Expanded(
+              //   child: Container(
+              //     color: Colors.tealAccent,
+              //     child: GestureDetector(
+              //       child: const Text("Note4"),
+              //       onTap: () {
+              //         playSound("note4.wav");
+              //       },
+              //     ),
+              //   ),
+              // ),
+              // Expanded(
+              //   child: Container(
+              //     color: Colors.white,
+              //     child: GestureDetector(
+              //       child: const Text("Note5"),
+              //       onTap: () {
+              //         playSound("note5.wav");
+              //       },
+              //     ),
+              //   ),
+              // ),
+              // Expanded(
+              //   child: Container(
+              //     color: Colors.red,
+              //     child: GestureDetector(
+              //       child: const Text("Note6"),
+              //       onTap: () {
+              //         playSound("note6.wav");
+              //       },
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
